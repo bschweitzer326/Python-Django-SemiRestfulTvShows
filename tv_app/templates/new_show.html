@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Semi-Restful TV Shows</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> 
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'new_show.css' %}">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="top">
+                <h1>Add a New Show</h1>
+                <a href="/shows">Go Back</a>
+            </div>
+
+            {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+            {% endif %}
+            
+            <form action="/create" method="POST">
+            {% csrf_token %}
+                <div class="second">
+                    <label class="boxone" for="title">Title</label>
+                    <input type="text" class="form-control" name="title">
+                </div>
+
+                <div class="middle">
+
+                    <div class="mid1">
+                        <label class="boxtwo" for="network">Network</label>
+                        <input type="text" class="form-control" name="network">  
+                    </div>
+                    
+                    <div class="mid2">
+                        <label class="boxthree" for="release">Release Date</label>
+                        <input type="date" class="form-control" name="release">  
+                    </div>
+
+                </div>
+
+                <div class="bottom">
+                    <label class="boxfour" for="description" >Description</label>
+                    <textarea class="descbox" name="description" id="" cols="30" rows="10"></textarea>
+                </div>
+
+                <input class="btn btn-dark" type="submit" value="Create">
+
+            </form>
+
+        
+
+
+
+
+
+        </div>
+    </body>
+</html>

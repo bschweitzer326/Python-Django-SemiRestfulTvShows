@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Semi-Restful TV Shows</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> 
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'show_view.css' %}">
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="top">
+                <h1>TV Show {{guide.id}}</h1>
+                <a href="/shows">Go Back</a>
+            </div>
+            
+            <p>Title: {{guide.title}}</p>
+            <p>Network: {{guide.network}}</p>
+            <p>Release Date: {{guide.release_date}}</p>
+            <p>Description: {{guide.description}}</p>
+
+            <p>Last Updated: {{guide.updated_at}}</p>
+
+            <div>
+                <a href="/shows/{{guide.id}}/edit">Edit</a> | 
+                <a href="/delete/{{guide.id}}" name="remove">Delete</a>
+            </div>
+
+
+        </div>
+    </body>
+</html>
